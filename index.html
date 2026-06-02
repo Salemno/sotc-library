@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Stars of the City Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Stars of the City Skill Module Library</h1>
+
+<div id="main-layout">
+
+    <aside id="filters-panel">
+
+<input
+       type="text"
+       id="search-bar"
+       placeholder="Search skill modules..."
+>
+<div id="filters-container">
+<details class="filter-group">
+    <summary>Tiers</summary>
+
+    <label>
+        <input type="checkbox" id="tier-1" >
+        Tier 1
+    </label>
+
+    <br>
+
+    <label>
+        <input type="checkbox" id="tier-2" >
+        Tier 2
+    </label>
+
+    <br>
+
+    <label>
+        <input type="checkbox" id="tier-3" >
+        Tier 3
+    </label>
+</details>
+<details class="filter-group">
+    <summary>Statuses</summary>
+
+    <div id="status-filters"></div>
+</details>
+<details class="filter-group">
+    <summary>Tags</summary>
+
+    <div id="tag-filters"></div>
+</details>
+<details class="filter-group">
+    <summary>Sources</summary>
+
+    <div id="source-filters"></div>
+</details>
+</div>
+
+</aside>
+
+<main id="results-panel">
+
+       <div id="results-count"></div>
+       <div id="skills-container"></div>
+</main>
+</div>
+ 
+
+    <script src="script.js"></script>
+
+</body>
+</html>
