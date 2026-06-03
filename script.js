@@ -22,6 +22,18 @@ const statusIcons = {
     "Tremor": '<img src="icons/Tremor.png" class="status-icon">'
 };
 
+// FilterStates
+
+const statusFilterStates = {};
+
+const tagFilterStates = {};
+
+const sourceFilterStates = {};
+
+const tierFilterStates = {};
+
+// Build skills
+
 function formatDescription(text) {
 
     let formatted = text;
@@ -137,6 +149,7 @@ async function loadSkills() {
 
     allSkills = await response.json();
 
+    buildTierFilters();
     buildStatusFilters();
     buildTagFilters();
     buildSourceFilters();
@@ -148,11 +161,166 @@ async function loadSkills() {
 );
 }
 
-function buildStatusFilters() {
+// Helper Functions
 
+function cycleFilterState(
+    stateObject,
+    key,
+    button
+) {
+
+    stateObject[key] =
+        (stateObject[key] + 1) % 3;
+
+    updateTriStateButton(
+        button,
+        key,
+        stateObject[key]
+    );
+
+    applyFilters();
+}
+
+function updateTriStateButton(
+    button,
+    label,
+    state
+) {
+
+    button.textContent = label;
+
+    button.classList.remove(
+        "filter-neutral",
+        "filter-include",
+        "filter-exclude"
+    );
+
+    if (state === 0) {
+
+        button.classList.add(
+            "filter-neutral"
+        );
+
+    }
+    else if (state === 1) {
+
+        button.classList.add(
+            "filter-include"
+        );
+
+    }
+    else {
+
+        button.classList.add(
+            "filter-exclude"
+        );
+
+    }
+}
+
+function matchesTriStateFilter(
+    stateObject,
+    skillValues
+) {
+
+    const included =
+        Object.keys(stateObject)
+            .filter(key =>
+                stateObject[key] === 1
+            );
+
+    const excluded =
+        Object.keys(stateObject)
+            .filter(key =>
+                stateObject[key] === 2
+            );
+
+    const matchesIncluded =
+
+        included.length === 0 ||
+
+        included.some(value =>
+            skillValues.includes(value)
+        );
+
+    const matchesExcluded =
+
+        excluded.every(value =>
+            !skillValues.includes(value)
+        );
+
+    return (
+        matchesIncluded &&
+        matchesExcluded
+    );
+}
+
+function noSourceFiltersSelected() {
+
+    return Object.values(
+        sourceFilterStates
+    ).every(
+        state => state === 0
+    );
+
+}
+
+// Build Filters
+
+function buildTierFilters() {
+
+    const container =
+        document.getElementById(
+            "tier-filters"
+        );
+
+    container.innerHTML = "";
+
+    [1, 2, 3].forEach(tier => {
+
+        tierFilterStates[tier] = 0;
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.className =
+            "tier-filter";
+
+     updateTriStateButton(
+    button,
+    tier,
+    0
+);
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                cycleFilterState(
+                    tierFilterStates,
+                    tier,
+                    button
+                );
+
+            }
+        );
+
+        container.appendChild(
+            button
+        );
+
+    });
+
+}
+
+function buildStatusFilters() {
     
     const container =
         document.getElementById("status-filters");
+
+        container.innerHTML = "";
 
     const allStatuses =
         new Set();
@@ -172,26 +340,33 @@ function buildStatusFilters() {
 
     sortedStatuses.forEach(status => {
 
-        const label =
-            document.createElement("label");
 
-        label.innerHTML = `
-            <input
-                type="checkbox"
-                value="${status}"
-            >
-            ${status}
-        `;
+        statusFilterStates[status] = 0;
+
+        const button =
+    document.createElement("button");
+
+button.className = "status-filter";
+
+button.textContent = `${status}`;
         
-        const checkbox =
-          label.querySelector("input");
-
-        checkbox.addEventListener(
-          "change",
-         applyFilters
+updateTriStateButton(
+    button,
+    status,
+    0
 );
 
-        container.appendChild(label);
+    button.addEventListener("click", () => {
+
+    cycleFilterState(
+        statusFilterStates,
+        status,
+        button
+    );
+
+});
+
+        container.appendChild(button);
 
     });
 
@@ -202,6 +377,8 @@ function buildTagFilters() {
 
     const container =
         document.getElementById("tag-filters");
+
+          container.innerHTML = "";
 
     const allTags =
         new Set();
@@ -221,28 +398,35 @@ function buildTagFilters() {
 
     sortedTags.forEach(tag => {
 
-        const label =
-            document.createElement("label");
+        tagFilterStates[tag] = 0;
 
-        label.innerHTML = `
-            <input
-                type="checkbox"
-                value="${tag}"
-            >
-            ${tag}
-        `;
+        const button =
+    document.createElement("button");
 
-        const checkbox =
-            label.querySelector("input");
+button.className = "tag-filter";
 
-        checkbox.addEventListener(
-            "change",
-            applyFilters
-        );
+button.textContent = `${tag}`;
 
-        container.appendChild(label);
+updateTriStateButton(
+    button,
+    tag,
+    0
+);
+
+button.addEventListener("click", () => {
+
+    cycleFilterState(
+        tagFilterStates,
+        tag,
+        button
+    );
+
+});
+
+        container.appendChild(button);
 
     });
+    
 }
 
 function buildSourceFilters() {
@@ -250,38 +434,140 @@ function buildSourceFilters() {
     const container =
         document.getElementById("source-filters");
 
-    container.innerHTML = "";
+          container.innerHTML = "";
 
-    const allSources =
-        [...new Set(
-            allSkills.map(skill => skill.source)
-        )].sort();
+ const allSources =
+    new Set();
 
-    allSources.forEach(source => {
+allSkills.forEach(skill => {
 
-        const label =
-            document.createElement("label");
+    if (skill.source) {
 
-        const checkbox =
-            document.createElement("input");
-
-        checkbox.type = "checkbox";
-        checkbox.value = source;
-
-        checkbox.addEventListener(
-            "change",
-            applyFilters
+        allSources.add(
+            skill.source
         );
 
-        label.appendChild(checkbox);
+    }
 
-        label.append(
-            document.createTextNode(source)
-        );
+});
 
-        container.appendChild(label);
+    const sortedSources =
+        [...allSources].sort();
+
+    sortedSources.forEach(source => {
+
+        sourceFilterStates[source] = 0;
+
+        const button =
+    document.createElement("button");
+
+button.className = "source-filter";
+
+button.textContent = `${source}`;
+
+updateTriStateButton(
+    button,
+    source,
+    0
+);
+
+button.addEventListener("click", () => {
+
+    cycleFilterState(
+        sourceFilterStates,
+        source,
+        button
+    );
+
+});
+
+        container.appendChild(button);
 
     });
+}
+
+// Apply Filters
+
+function applyFilters() {
+
+    const searchTerm =
+        document
+            .getElementById("search-bar")
+            .value
+            .toLowerCase();
+    Array.from(
+        document.querySelectorAll(
+            '#source-filters input:checked'
+        )
+    )
+    .map(cb => cb.value);
+
+    const selectedTags =
+    Array.from(
+        document.querySelectorAll(
+            "#tag-filters input:checked"
+        )
+    )
+    .map(input => input.value);
+
+
+    const filteredSkills =
+        allSkills.filter(skill => {
+
+            const matchesSearch =
+                skill.name
+                    .toLowerCase()
+                    .includes(searchTerm);
+
+const matchesTier =
+    matchesTriStateFilter(
+        tierFilterStates,
+        [String(skill.tier)]
+    );
+
+const matchesSource =
+
+    noSourceFiltersSelected()
+
+        ? skill.source === "SoTC Core"
+
+        : matchesTriStateFilter(
+            sourceFilterStates,
+            [skill.source]
+        );
+
+
+ const matchesStatus =
+    matchesTriStateFilter(
+        statusFilterStates,
+        skill.statuses
+    );
+
+const matchesTags =
+    matchesTriStateFilter(
+        tagFilterStates,
+        skill.tags
+    );
+
+    console.log({
+    name: skill.name,
+    matchesSearch,
+    matchesTier,
+    matchesStatus,
+    matchesTags,
+    matchesSource
+});
+
+    return matchesSearch && 
+           matchesTier && 
+           matchesStatus && 
+           matchesTags && 
+           matchesSource;
+        });
+
+    renderSkills(filteredSkills);
+
+    updateResultsCount(filteredSkills.length);
 }
 
 function updateResultsCount(filteredCount) {
@@ -305,133 +591,8 @@ function updateResultsCount(filteredCount) {
     }
 }
 
-function applyFilters() {
-
-    const searchTerm =
-        document
-            .getElementById("search-bar")
-            .value
-            .toLowerCase();
-
-    const tier1 =
-        document.getElementById("tier-1").checked;
-
-    const tier2 =
-        document.getElementById("tier-2").checked;
-
-    const tier3 =
-        document.getElementById("tier-3").checked;
-    
-    const selectedStatuses =
-    Array.from(
-        document.querySelectorAll(
-            "#status-filters input:checked"
-        )
-    )
-    .map(input => input.value);
-
-    const selectedSources =
-    Array.from(
-        document.querySelectorAll(
-            '#source-filters input:checked'
-        )
-    )
-    .map(cb => cb.value);
-
-
-
-    const filteredSkills =
-        allSkills.filter(skill => {
-
-            const matchesSearch =
-                skill.name
-                    .toLowerCase()
-                    .includes(searchTerm);
-
-            const noTierSelected =
-    !tier1 && !tier2 && !tier3;
-
-const matchesTier =
-
-    noTierSelected
-
-    ||
-
-    (skill.tier === 1 && tier1)
-
-    ||
-
-    (skill.tier === 2 && tier2)
-
-    ||
-
-    (skill.tier === 3 && tier3);
-
-            const matchesStatus =
-
-            selectedStatuses.length === 0
-
-            ||
-
-            skill.statuses.some(status =>
-               selectedStatuses.includes(status)
-             );
-            
-             const selectedTags =
-    Array.from(
-        document.querySelectorAll(
-            "#tag-filters input:checked"
-        )
-    )
-    .map(input => input.value);
-
-    const matchesTags =
-
-    selectedTags.length === 0
-
-    ||
-
-    skill.tags.some(tag =>
-       selectedTags.includes(tag)
-     );
-    
-    const matchesSource =
-
-    selectedSources.length === 0
-
-        ? skill.source === "SoTC Core"
-
-        : selectedSources.includes(
-            skill.source
-        );
-
-    return matchesSearch && 
-           matchesTier && 
-           matchesStatus && 
-           matchesTags && 
-           matchesSource;
-        });
-
-    renderSkills(filteredSkills);
-
-    updateResultsCount(filteredSkills.length);
-}
-
-
 document
     .getElementById("search-bar")
     .addEventListener("input", applyFilters);
-
-document
-    .getElementById("tier-1")
-    .addEventListener("change", applyFilters);
-
-document
-    .getElementById("tier-2")
-    .addEventListener("change", applyFilters);
-
-document
-    .getElementById("tier-3")
-    .addEventListener("change", applyFilters);
 
 loadSkills();
