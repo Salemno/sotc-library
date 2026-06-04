@@ -24,13 +24,16 @@ const statusIcons = {
 
 // FilterStates
 
+const tierFilterStates = {};
+
 const statusFilterStates = {};
 
 const tagFilterStates = {};
 
+const effectFilterStates = {};
+
 const sourceFilterStates = {};
 
-const tierFilterStates = {};
 
 // Build skills
 
@@ -52,7 +55,7 @@ function formatDescription(text) {
     return formatted;
 }
 
-function renderSkills(skills) {
+function renderLibrary(skills) {
 
     const container =
         document.getElementById("skills-container");
@@ -152,9 +155,11 @@ async function loadSkills() {
     buildTierFilters();
     buildStatusFilters();
     buildTagFilters();
+    buildEffectFilters();
     buildSourceFilters();
 
-    renderSkills(allSkills);
+    renderLibrary(allSkills);
+    applyFilters();
 
     updateResultsCount(
        allSkills.length
@@ -429,6 +434,80 @@ button.addEventListener("click", () => {
     
 }
 
+function buildEffectFilters() {
+
+    const container =
+        document.getElementById(
+            "effect-filters"
+        );
+
+    container.innerHTML = "";
+
+    const allEffects =
+        new Set();
+
+    allSkills.forEach(skill => {
+
+        skill.effects.forEach(effect => {
+
+            allEffects.add(effect);
+
+        });
+
+    });
+
+    [...allEffects]
+        .sort()
+        .forEach(effect => {
+
+            effectFilterStates[
+                effect
+            ] = 0;
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "effect-filter";
+
+            updateTriStateButton(
+                button,
+                effect,
+                0
+            );
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    cycleFilterState(
+                        effectFilterStates,
+                        effect,
+                        button
+                    );
+
+                    updateTriStateButton(
+                        button,
+                        effect,
+                        effectFilterStates[
+                            effect
+                        ]
+                    );
+
+                    applyFilters();
+                }
+            );
+
+            container.appendChild(
+                button
+            );
+
+        });
+
+}
+
 function buildSourceFilters() {
 
     const container =
@@ -549,23 +628,46 @@ const matchesTags =
         skill.tags
     );
 
+const matchesEffects =
+    matchesTriStateFilter(
+        effectFilterStates,
+        skill.effects
+    );
+
     console.log({
     name: skill.name,
     matchesSearch,
     matchesTier,
     matchesStatus,
     matchesTags,
-    matchesSource
+    matchesSource,
+    matchesEffects
 });
 
     return matchesSearch && 
            matchesTier && 
            matchesStatus && 
            matchesTags && 
+           matchesEffects &&
            matchesSource;
         });
 
-    renderSkills(filteredSkills);
+filteredSkills.sort((a, b) => {
+
+    if (a.tier !== b.tier) {
+
+        return a.tier - b.tier;
+
+    }
+
+    return a.name.localeCompare(
+        b.name
+    );
+
+});
+
+
+    renderLibrary(filteredSkills);
 
     updateResultsCount(filteredSkills.length);
 }

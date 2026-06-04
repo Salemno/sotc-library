@@ -212,6 +212,7 @@ Filters                              ]
 #tier-filters,
 #status-filters, 
 #tag-filters,
+#effect-filters,
 #source-filters {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -220,7 +221,8 @@ Filters                              ]
 
 #tier-filters label,
 #status-filters label, 
-#tag-filters label
+#tag-filters label,
+#effect-filters label,
 #source-filters label {
     display: flex;
     align-items: center;
@@ -230,6 +232,7 @@ Filters                              ]
 .tier-filter,
 .status-filter,
 .tag-filter,
+.effect-filter,
 .source-filter {
     width: 100%;
     text-align: center;

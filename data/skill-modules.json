@@ -200,7 +200,7 @@
     "name": "Fast",
     "tier": 1,
     "source": "SoTC Core",
-    "description": "Choose one:\n\nThis skill gains: \"[On Use] Gain 1 Haste.\"\nThis skill gains: \"[After Use] Gain 1 Haste.\"\n\nIf the Cost of this skill is 3 or higher, this gives 2 instead.",
+    "description": "Choose one:\n\nThis skill gains: \"[On Use] Gain {Cost} Haste.\"\nThis skill gains: \"[After Use] Gain {Cost-1} Haste.\"\n\nIf Haste gained would be 0, it becomes 1 instead.",
     "tags": ["On Use",
              "After Use"],
     "statuses": ["Haste"],
@@ -357,7 +357,7 @@
     "name": "Backup Power",
     "tier": 1,
     "source": "SoTC Core",
-    "description": "This skill gains: \"[Exhaust] Tripper all 'spend Charge\" effects on this skill without actually spending Charge.",
+    "description": "This skill gains: \"[Exhaust] Trigger all \"Spend Charge\" effects on this skill without actually spending Charge.",
     "tags": ["Exhaust"],
     "statuses": ["Charge"],
     "effects": [],
@@ -1683,7 +1683,90 @@
     "effects": [],
     "repeating": false,
     "contributor": null
+  },
+  {
+    "id": "141-mutilate",
+    "name": "mutilate",
+    "tier": 3,
+    "source": "SoTC Core",
+    "description": "One Die gains \"[Hit] Inflict {Cost} Bleed, 1 Fragile, and 1 Bind.\"\n\nIf Cost is 0, inflict 1 Bleed instead.",
+    "tags": ["Hit"],
+    "statuses": ["Bleed","Fragile","Bind"],
+    "effects": [],
+    "repeating": false,
+    "contributor": null
+  },
+  {
+    "id": "142-defibrillator",
+    "name": "Defibrillator",
+    "tier": 3,
+    "source": "SoTC Core",
+    "description": "This skill gains: \"[After Use] You may spend a total of 10 of any combination of Emotion Points and/or Charge to trigger Revival on one defeated ally. That ally cannot be revived by this skill again for the rest of combat\"",
+    "tags": ["After Use"],
+    "statuses": ["Charge"],
+    "effects": ["Emotion Points","Revival"],
+    "repeating": false,
+    "contributor": "Roxas"
+  },
+  {
+    "id": "143-cleave-through-space",
+    "name": "Cleave Through Space",
+    "tier": 3,
+    "source": "SoTC Core",
+    "description": "One Slash Die gains: \"[Crit] Remove all Saved Dice from target, and halve target's Aggro, Protection, Thorns, and Safeguard. The opposing skill cannot give any of these things.\"",
+    "tags": ["Crit"],
+    "statuses": ["Aggro","Protection","Thorns","Safeguard"],
+    "effects": ["Boon Removal"],
+    "repeating": false,
+    "contributor": null
+  },
+  {
+    "id": "144-pierce-through-all",
+    "name": "Pierce Through All",
+    "tier": 3,
+    "source": "SoTC Core",
+    "description": "This skill gains \"[Eminence] All Pierce Dice on this skill treat affinities as 0\"\n\nAll Pierce Dice on this skill gain +1 Base Power.",
+    "tags": ["Eminence"],
+    "statuses": [],
+    "effects": ["Power"],
+    "repeating": false,
+    "contributor": null
+  },
+  {
+    "id": "145-bash-through-bodies",
+    "name": "Bash Through Bodies",
+    "tier": 3,
+    "source": "SoTC Core",
+    "description": "This skill gains. \"[Eminence] On hit with a Blunt die, deal Blunt Damage and Stagger to a different enemy of your choice equal to half that Die's total power.\"",
+    "tags": ["Eminence"],
+    "statuses": [],
+    "effects": [],
+    "repeating": false,
+    "contributor": null
+  },
+  {
+    "id": "146-blood-clot",
+    "name": "Blood Clot",
+    "tier": 1,
+    "source": "SoTC Core",
+    "description": "This skill gains \"[Eminence] Bleed has no effect on you or your target, and cannot be reduced.\"",
+    "tags": ["Eminence"],
+    "statuses": ["Bleed"],
+    "effects": [],
+    "repeating": false,
+    "contributor": null
+  },
+  {
+    "id": "147-frustration",
+    "name": "Frustration",
+    "tier": 1,
+    "source": "SoTC Core",
+    "description": "One Die gains: \"[Clash Lose] Gain 1 Emotion Point.\"",
+    "tags": ["Clash Lose"],
+    "statuses": [],
+    "effects": ["Emotion Points"],
+    "repeating": true,
+    "contributor": null
   }
-
 
 ]
