@@ -1,4 +1,5 @@
 let allSkills = [];
+let allFeats = [];
 
 const statusIcons = {
     "Aggro": '<img src="icons/Aggro.png" class="status-icon">',
@@ -21,6 +22,147 @@ const statusIcons = {
     "Thorns": '<img src="icons/Thorns.png" class="status-icon">',
     "Tremor": '<img src="icons/Tremor.png" class="status-icon">'
 };
+
+// tabs
+
+let currentLibrary =
+    "modules";
+
+
+    function initializeTabs() {
+
+    const tabs =
+        document.querySelectorAll(
+            ".library-tab"
+        );
+
+    tabs.forEach(tab => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+                console.log(
+                    "Clicked.",
+                    tab.dataset.library
+                )
+                tabs.forEach(t =>
+                    t.classList.remove(
+                        "active"
+                    )
+                );
+
+                tab.classList.add(
+                    "active"
+                );
+
+                currentLibrary =
+                    tab.dataset.library;
+
+                loadCurrentLibrary();
+
+            }
+        );
+
+    });
+
+}
+
+function loadCurrentLibrary() {
+
+const tierPanel =
+    document.getElementById(
+        "tier-section"
+    );
+
+const statusPanel =
+    document.getElementById(
+        "status-section"
+    );
+
+const tagPanel =
+    document.getElementById(
+        "tag-section"
+    );
+
+const effectPanel =
+    document.getElementById(
+        "effect-section"
+    );
+
+const sourcePanel =
+    document.getElementById(
+        "source-section"
+    );
+
+
+    const searchBar =
+    document.getElementById(
+        "search-bar"
+    );
+
+tierPanel.style.display = "none";
+statusPanel.style.display = "none";
+tagPanel.style.display = "none";
+effectPanel.style.display = "none";
+sourcePanel.style.display = "none";
+
+    switch (currentLibrary) {
+
+    case "modules":
+
+tierPanel.style.display = "block";
+statusPanel.style.display = "block";
+tagPanel.style.display = "block";
+effectPanel.style.display = "block";
+sourcePanel.style.display = "block";
+
+        searchBar.placeholder =
+            "Search skill modules...";
+
+        applyModuleFilters();
+
+        break;
+
+    case "feats":
+
+statusPanel.style.display = "block";
+sourcePanel.style.display = "block";
+
+        searchBar.placeholder =
+            "Search feats...";
+
+        applyFeatFilters();
+
+        break;
+}
+
+    switch (
+        currentLibrary
+    ) {
+
+        case "modules":
+
+            applyModuleFilters();
+
+            break;
+
+        case "templates":
+
+    document.getElementById(
+        "skills-container"
+    ).innerHTML =
+        "<h2>Templates Coming Soon</h2>";
+
+    break;
+
+        case "feats":
+  
+            applyFeatFilters();
+
+            break;
+    }
+
+}
 
 // FilterStates
 
@@ -55,14 +197,16 @@ function formatDescription(text) {
     return formatted;
 }
 
-function renderLibrary(skills) {
+function renderModules(records) {
+
+    console.log("rendering mods",records.length);
 
     const container =
         document.getElementById("skills-container");
 
     container.innerHTML = "";
 
-    skills.forEach(skill => {
+    records.forEach(skill => {
 
         const card = document.createElement("div");
 
@@ -121,7 +265,7 @@ else if (skill.tier === 3) {
         `;
 
         const desc = document.createElement("div");
-        desc.className = "skill-description";
+        desc.className = "card-description";
         desc.innerHTML =
          formatDescription(skill.description);
 
@@ -146,11 +290,87 @@ if (skill.contributor) {
     });
 }
 
-async function loadSkills() {
+function renderFeats(records) {
 
-    const response = await fetch("data/skill-modules.json");
+    const container =
+        document.getElementById(
+            "skills-container"
+        );
 
-    allSkills = await response.json();
+    container.innerHTML = "";
+
+    records.forEach(feat => {
+
+    let sourceClass = "source-default";
+
+    if (feat.source === "SoTC Core") {
+        sourceClass = "source-core";
+    }
+    else if (feat.source === "Community Expansion") {
+        sourceClass = "source-community";
+    }
+    else if (feat.source === "City Supplement") {
+        sourceClass = "source-supplement";
+    }
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+        card.className =
+            "skill-card";
+
+        card.innerHTML = `
+
+    <div class="card-header">
+
+        <div class="skill-name">
+            ${feat.name}
+        </div>
+
+        <div class="source-badge ${sourceClass}">
+            ${feat.source}
+        </div>
+
+    </div>
+
+        <div>
+                <p class="skill-subline ">${feat.featType}${feat.hasprereq ? ", Req. ": ""}${feat.prerequisite}</p>
+            </div>
+
+
+`;
+
+        container.appendChild(
+            card
+        );
+
+                const desc = document.createElement("div");
+        desc.className = "card-description";
+        desc.innerHTML =
+         formatDescription(feat.description);
+
+
+        card.appendChild(desc);
+
+    });
+
+}
+
+async function loadLibrary() {
+
+    allSkills =
+        await loadData(
+            "skill-modules.json"
+        );
+    
+    allFeats =
+       await loadData(
+           "feats.json"
+       );
+
+    initializeTabs();
 
     buildTierFilters();
     buildStatusFilters();
@@ -158,15 +378,26 @@ async function loadSkills() {
     buildEffectFilters();
     buildSourceFilters();
 
-    renderLibrary(allSkills);
-    applyFilters();
+    renderModules(allSkills);
+
+    applyModuleFilters();
 
     updateResultsCount(
-       allSkills.length
-);
+        allSkills.length
+    );
 }
 
 // Helper Functions
+
+async function loadData(fileName) {
+
+    const response =
+        await fetch(
+            `data/${fileName}`
+        );
+
+    return await response.json();
+}
 
 function cycleFilterState(
     stateObject,
@@ -496,7 +727,7 @@ function buildEffectFilters() {
                         ]
                     );
 
-                    applyFilters();
+                    applyModuleFilters();
                 }
             );
 
@@ -567,7 +798,7 @@ button.addEventListener("click", () => {
 
 // Apply Filters
 
-function applyFilters() {
+function applyModuleFilters() {
 
     const searchTerm =
         document
@@ -590,6 +821,8 @@ function applyFilters() {
     .map(input => input.value);
 
 
+        console.log("Applying mod filters");
+    
     const filteredSkills =
         allSkills.filter(skill => {
 
@@ -644,6 +877,8 @@ const matchesEffects =
     matchesEffects
 });
 
+    console.log(searchTerm);
+
     return matchesSearch && 
            matchesTier && 
            matchesStatus && 
@@ -667,34 +902,176 @@ filteredSkills.sort((a, b) => {
 });
 
 
-    renderLibrary(filteredSkills);
+    renderModules(filteredSkills);
 
     updateResultsCount(filteredSkills.length);
 }
 
-function updateResultsCount(filteredCount) {
+function applyFeatFilters() {
 
-    const countElement =
+    const searchTerm =
+        document
+            .getElementById("search-bar")
+            .value
+            .toLowerCase();
+    Array.from(
+        document.querySelectorAll(
+            '#source-filters input:checked'
+        )
+    )
+    .map(cb => cb.value);
+
+    const selectedTags =
+    Array.from(
+        document.querySelectorAll(
+            "#tag-filters input:checked"
+        )
+    )
+    .map(input => input.value);
+
+
+        console.log("Applying feat filters");
+    
+    const filteredFeats =
+        allFeats.filter(feat => {
+
+            const matchesSearch =
+                feat.name
+                    .toLowerCase()
+                    .includes(searchTerm);
+
+const matchesSource =
+
+    noSourceFiltersSelected()
+
+        ? feat.source === "SoTC Core"
+
+        : matchesTriStateFilter(
+            sourceFilterStates,
+            [feat.source]
+        );
+
+
+ const matchesStatus =
+    matchesTriStateFilter(
+        statusFilterStates,
+        feat.statuses
+    );
+
+    console.log({
+    name: feat.name,
+    matchesSearch,
+    matchesStatus,
+    matchesSource,
+});
+
+    console.log(searchTerm);
+
+    return matchesSearch && 
+           matchesStatus && 
+           matchesSource;
+        });
+
+const featTypeOrder = {
+    "General": 1,
+    "Core": 2,
+    "Feats with Prerequisites": 3,
+    "Status-Focused": 4
+};
+
+filteredFeats.sort((a, b) => {
+
+    const typeA =
+        featTypeOrder[a.featType] || 999;
+
+    const typeB =
+        featTypeOrder[b.featType] || 999;
+
+    if (typeA !== typeB) {
+
+        return typeA - typeB;
+
+    }
+
+    return a.name.localeCompare(
+        b.name
+    );
+
+});
+
+
+    renderFeats(filteredFeats);
+
+    updateResultsCount(filteredFeats.length);
+}
+
+
+function applyFilters() {
+
+    switch (currentLibrary) {
+
+        case "modules":
+
+            applyModuleFilters();
+            break;
+
+        case "feats":
+
+            applyFeatFilters();
+            break;
+    }
+}
+
+
+function updateResultsCount(filteredCount) 
+{
+
+        const countElement =
         document.getElementById("results-count");
 
-    const totalCount =
-        allSkills.length;
+    const resultsCounter =
+        document.getElementById(
+            "results-count"
+        );
 
-    if (filteredCount === totalCount) {
+    switch (currentLibrary) {
+
+        case "modules":
+
+            if (filteredCount === allSkills.length) {
 
         countElement.textContent =
-            `Showing all ${totalCount} modules`;
+            `Showing all ${allSkills.length} modules.`;
 
     } else {
 
         countElement.textContent =
-            `Showing ${filteredCount} of ${totalCount} modules`;
+            `Showing ${filteredCount} of ${allSkills.length} modules.`;
 
     }
-}
+            break;
+
+        case "feats":
+
+            if (filteredCount === allFeats.length) {
+
+        countElement.textContent =
+            `Showing all ${allFeats.length} feats.`;
+
+    } else {
+
+        countElement.textContent =
+            `Showing ${filteredCount} of ${allFeats.length} feats.`;
+
+    }
+
+            break;
+    }
+
+};
 
 document
     .getElementById("search-bar")
     .addEventListener("input", applyFilters);
 
-loadSkills();
+loadLibrary();

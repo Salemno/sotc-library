@@ -1,0 +1,612 @@
+[
+{
+    "id": "jack-of-all-trades",
+    "name": "Jack of all Trades",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Increase your max Light by 1, start each battle with 1 additional Emotion Point, start each Mission with 1 additional Excellence.\n\nIncrease the value of all of your Speed Dice by 1.",
+    "contributor": null
+},
+{
+    "id": "skilled",
+    "name": "Skilled",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Increase a Stat of your choice by 1. Gain an additional Story Ability from any Archetype. Start each Mission with 1 additional Excellence.\n\nThis can be taken multiple times.",
+    "contributor": null
+},
+{
+    "id": "packed-bags",
+    "name": "Packed Bags",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Your skills with a [Limit] have 2 additional max uses. When you Exhaust a limited-use skill, regain 10 HP.",
+    "contributor": null
+},
+{
+    "id": "killer-instincts",
+    "name": "Killer Instincts",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "On Kill, regain 1 Light.",
+    "contributor": null
+},
+{
+    "id": "firm-as-a-great-mountain",
+    "name": "Firm as a Great Mountain",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When an E.G.O Passive is activated on you, and it hasn't been previously activated this combat, you regain 10 HP.\n\nThis increases to 20 at Level 9+, and 30 at Level 16+.",
+    "contributor": null
+},
+{
+    "id": "remain-vigilant-in-peace",
+    "name": "Remain Vigilant in Peace",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When an E.G.O Passive is activated on you, and it hasn't been previously activated this combat, you regain 10 Stagger Resist unless staggered.\n\nThis increases to 15 at Level 9+, and 20 at Level 16+.",
+    "contributor": null
+},
+{
+    "id": "survival-instinct",
+    "name": "Survival Instinct",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "At the start of each scene, if you have recovered from Stagger at any point during this combat, gain 1 Strength and 1 Endurance.",
+    "contributor": null
+},
+{
+    "id": "singular-strike",
+    "name": "Singular Strike",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Known Skills and Slotted E.G.O that are composed of only a single, non-counter Offensive Die gain the following benefits:\n\n+1 Base Power.\n\nYield +1 Emotion Point in a clash.",
+    "contributor": null
+},
+{
+    "id": "margin",
+    "name": "Margin",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Whenever you Exhaust a skill with [Limit], you may restore an additional use to another non-Exhausted [Limit] Skill.",
+    "contributor": "Ahugeham"
+},
+{
+    "id": "cover",
+    "name": "Cover",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When an enemy targets you with a skill that has multiple Attack Weight, including if you intercept, you may spend 1 Light to reduce the Attack Weight of that skill by 1. When you do so, you choose which of the previously declared targets, other than yourself, is no longer targeted.",
+    "contributor": null
+},
+{
+    "id": "demolitions-expert",
+    "name": "Demolitions Expert",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "You deal +2 damage on hit against Machines, or +5 damage on hit against Objects on the battlefield.\n\nOn hit against a target, if you dealt 10 or more damage (after modifiers), you may reduce a Boon on the target by 1. Each enemy can only be affected by this ability 3 times each scene",
+    "contributor": null
+},
+{
+    "id": "pierce-through",
+    "name": "Pierce Through",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When your Pierce Dice win a clash against a Defensive Die, halve the Power of the opposing Die before calculating damage/stagger.\n\nYour Pierce Damage and Stagger affinities both gain -1.",
+    "contributor": null
+},
+{
+    "id": "blunt-trauma",
+    "name": "Blunt Trauma",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "On hit with a Blunt Die, all remaining dice on the target’s skill lose 1 Power. If the target is deploying Dice, all remaining dice in the sequence suffer this effect instead.\n\nYour Blunt Damage and Stagger affinities both gain -1.",
+    "contributor": null
+},
+{
+    "id": "slashing-style",
+    "name": "Slashing Style",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Once per scene, before you roll a Slash Die, you may roll it with advantage, and roll 3 times and take the highest result instead of the regular 2.\n\nYour Slash Damage and Stagger affinities both gain -1.",
+    "contributor": null
+},
+{
+    "id": "triform-tactics",
+    "name": "Triform Tactics",
+    "source": "SoTC Core",
+    "featType": "General",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["One of: Pierce Through, Blunt Trauma, or Slashing Style"],
+    "description": "You are considered to have all three of the prerequisite Feats. Only 1 may be active at a time, chosen at the start of each scene.\n\nIn addition, the damage and stagger affinity boost from each Feat changes to -2.",
+    "contributor": null
+},
+{
+    "id": "speed-adept-building-speed",
+    "name": "Speed Adept: Building Speed",
+    "source": "SoTC Core",
+    "featType": "Core",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Agility 6"],
+    "description": "Incompatible with Speed Adept: Opening Speed.\n\nYou have an additional Speed Die starting from the third scene and onwards.",
+    "contributor": null
+},
+{
+    "id": "speed-adept-opening-speed",
+    "name": "Speed Adept: Opening Speed",
+    "source": "SoTC Core",
+    "featType": "Core",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Agility 6"],
+    "description": "Incompatible with Speed Adept: Building Speed.\n\nYou have an additional Speed Die during the first two scenes of each combat.",
+    "contributor": null
+},
+{
+    "id": "speed-expert",
+    "name": "Speed Expert",
+    "source": "SoTC Core",
+    "featType": "Core",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Agility 8, Either Speed Adept"],
+    "description": "Combines with either Speed Adept. The effects of Speed Adept are suppressed while you have this Feat.\n\nYou have 1 additional Speed Die each scene.",
+    "contributor": null
+},
+{
+    "id": "evade-expert",
+    "name": "Evade Expert",
+    "source": "SoTC Core",
+    "featType": "Core",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Agility 6"],
+    "description": "All of your Evade Dice on known skills gain +1 Base Power",
+    "contributor": null
+},
+{
+    "id": "guard-expert",
+    "name": "Guard Expert",
+    "source": "SoTC Core",
+    "featType": "Core",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Vitality 6"],
+    "description": "All of your Block Dice on known skills gain +1 Base Power.",
+    "contributor": null
+},
+{
+
+    "id": "cornered-fury",
+    "name": "Cornered Fury",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Might 6"],
+    "description": "While you are at or below half of your max HP, you deal +2 damage on hit.",
+    "contributor": null
+
+},
+{
+
+    "id": "wounded-tenacity",
+    "name": "Wounded Tenacity",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Vitality 4"],
+    "description": "While you are at or below half your max HP, your Stagger Resistances gain -2.",
+    "contributor": null
+
+},
+{
+
+    "id": "heavy-block",
+    "name": "Heavy Block",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Vitality 4"],
+    "description": "You deal an additional 2 points of Stagger on Clash Win with a Block Die.",
+    "contributor": null
+
+},
+{
+
+    "id": "puncture",
+    "name": "Puncture",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Might 4, Agility 4"],
+    "description": "On Crit, ignore the target's resistances.",
+    "contributor": null
+
+},
+{
+
+    "id": "genius",
+    "name": "Genius",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Intellect 6"],
+    "description": "All of your skills gain +1 Innate Rank 1 module.",
+    "contributor": null
+
+},
+{
+
+    "id": "effloresced-ego",
+    "name": "Effloresced E.G.O",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Persona 6"],
+    "description": "Incompatible with E.G.O Corrosion.\n\nChoose a Base E.G.O Passive, you gain this Passive, and it activates immediately at the start of combat. If you choose the same Passive as your Base E.G.O, remove it from your Base E.G.O and choose a new Base Passive to replace it with. This counts as an E.G.O passive for all effects that require them.",
+    "contributor": null
+
+},
+{
+
+    "id": "ego-corrosion",
+    "name": "E.G.O Corrosion",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Persona 6"],
+    "description": "Incompatible with Effloresced E.G.O.\n\nAt the start of each Mission, choose a slotted E.G.O of ZAYIN, TETH, or HE rank (excluding your Base E.G.O). At the start of combat, activate that E.G.O's Passive immediately.\n\nGain an additional Tragic Flaw that relates to the source of the E.G.O (Work with the GM to decide).",
+    "contributor": null
+
+},
+{
+
+    "id": "the-fastest",
+    "name": "The Fastest",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Agility 8"],
+    "description": "After rolling Speed Dice, your slowest in the scene is converted into an Infinity Die. On a tie, choose only one to convert.\n\nInfinity Dice are Speed Dice which always go at the top of initiative. If you need to compare speed values, consider the die to have a value of 20.",
+    "contributor": null
+
+},
+{
+
+    "id": "speed-empowerment",
+    "name": "Speed Empowerment",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Agility 4"],
+    "description": "When using a skill with a Speed Die of value 10 or higher, roll each Die on that skill with Advantage",
+    "contributor": null
+
+},
+{
+
+    "id": "mark-of-predation",
+    "name": "Mark of Predation",
+    "source": "SoTC Core",
+    "featType": "Feats with Prerequisites",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Instinct 6"],
+    "description": "At the start of each scene, after Speed Dice are rolled, declare a single enemy that fulfils one of the following conditions:\n\n   - The enemy rolled 4 or fewer Speed Dice this scene and at least one of them rolled a value of 1.\n   - The enemy rolled 5 or more Speed Dice this scene and at least two of them rolled a value of 1.\n   - The enemy has the “Shimmering” ability and started the scene with Bindequal to or greater than the number of Speed Dice it rolled.\n\nThat enemy is now your Prey for the rest of the scene. Whenever your Prey targets you with a skill, they roll dice with Disadvantage.",
+    "contributor": null
+
+},
+{
+
+    "id": "flare-strike",
+    "name": "Flare Strike",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When you stagger an enemy, Trigger Blaze against them and gain 1 Emotion Point.",
+    "contributor": null
+
+},
+{
+
+    "id": "spiked-shield",
+    "name": "Spiked Shield",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When you win a clash with a Block Die, deal damage to the attack equal to your Thorns (Max 5).",
+    "contributor": null
+
+},
+{
+
+    "id": "tremor-reverb",
+    "name": "Tremor: Reverb",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When Triggering Tremor Burst against an already staggered enemy or an enemy without a Stagger Resist Stat, they take damage = half their Tremor.",
+    "contributor": null
+
+},
+{
+
+    "id": "tremor-retort",
+    "name": "Tremor Retort",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["When staggered, inflict 5 Tremor against the enemy who staggered you. Then Trigger Tremor Burst against them.\n\nIf there was no definitive attacker, instead inflict 5 Tremor on all foes and do not Trigger Tremor Burst."],
+    "description": "",
+    "contributor": null
+
+},
+{
+
+    "id": "getting-the-party-started",
+    "name": "Getting the Party Started!",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Aggro"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "At the end of the first scene each combat, your Aggro is not reduced.\n\nWhen you intercept an attack using Aggro, the original target of the attack gains 1 Emotion Point (once per ally per scene).",
+    "contributor": null
+
+},
+{
+
+    "id": "envy-of-the-proud",
+    "name": "Envy of the Proud",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Sinking"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When you use an E.G.O that does not inflict Sinking or Trigger Sinking Deluge, inflict Sinking on the target based on its slot (1 For ZAYIN, 2 for TETH, 3 for HE, etc.) This triggers at the same step as [On Use].\n\nIf the E.G.O is used with Attack Weight, inflict 1 less but do so to all targets.",
+    "contributor": null
+
+},
+{
+
+    "id": "efficient-systems",
+    "name": "Efficient Systems",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Charge"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When giving a Boon or Buff to an ally or yourself, you may spend 3 Charge to increase the amount given by 1 for a Buff, or 2 for a Boon.",
+    "contributor": "Gabeny"
+
+},
+{
+
+    "id": "energy-recycling",
+    "name": "Energy Recycling",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Charge"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Your deployed non-counter Defensive Dice gain +1 Power.\n\nAt the end of a scene, gain 2 Charge for every saved die that's gone unused.",
+    "contributor": null
+
+},
+{
+
+    "id": "cannibalism",
+    "name": "Cannibalism",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Bleed"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "On kill, regain HP = 5 + Bleed on the enemy.\n\nAt the end of each scene, if at least 1 enemy has 2 or more Bleed, gain 1 Emotion Point.",
+    "contributor": null
+
+},
+{
+
+    "id": "armor-of-apathy",
+    "name": "Armor of Apathy",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Sinking"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Sinking no longer reduces your Emotion Points.\n\nWhenever you start a scene with 3 or more Sinking, gain the following saved Die:\n\n[Block] 1d6 [Clash Lose] Inflict 1 Sinking for every 3 Sinking on self (max 5).\n\nThis die cannot be modified. ",
+    "contributor": null
+
+},
+{
+
+    "id": "burning-blitz",
+    "name": "Burning Blitz",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Burn"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When you are affected by Blaze, you cannot spread Burn to your allies.\n\nBurn cannot reduce your HP below 1.\n\nOn hit against an enemy, if your Burn is greater than theirs, inflict 1 Burn on the target.",
+    "contributor": null
+
+},
+{
+
+    "id": "blast-quake",
+    "name": "Blast Quake",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Tremor"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When an enemy triggers Tremor Burst against you, take half as much Stagger, and you may choose to ignore any reductions in your Tremor count.\n\nWhenever you trigger Tremor Burst on yourself, inflict 1 Tremor on all foes. Increase the amount inflicted by 1 for every 10 Tremor on self.",
+    "contributor": null
+
+},
+{
+
+    "id": "at-home-among-battle",
+    "name": "At Home Among Battle",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Poise"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Increase two of your Stagger Affinities by -1.\n\nWhenever you take an instance of damage that is 10 or greater (after all modifiers), gain 3 Poise",
+    "contributor": null
+
+},
+{
+
+    "id": "the-joy-of-decay",
+    "name": "The Joy of Decay",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Sinking","Fragile"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "At the end of each scene, you may pay 1 Light or 4 Emotion Points to enact both of the following:\n\n   - You regain Stagger Resistance = half the highest Sinking on a single enemy.\n   - Each enemy gains 1 Fragile next scene for every 5 Sinking on them (max of 3).\n\nThese effects occur before Sinking is halved.",
+    "contributor": null
+
+},
+{
+
+    "id": "changing-of-the-seasons",
+    "name": "Changing of the Seasons",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Thorns","Aggro","Resolve","Protection"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "You have a “Season Tracker”. At the start of each scene, progress to the next season, or start in Spring if there is no active season. You gain that season's benefits.\n\nOnce Winter ends, reset the cycle back to Spring. Your Season Tracker carries on between combats, but resets after each Mission.\n\nSpring: At the end of this scene, you don’t lose Thorns\n\nSummer: Gain 2 Aggro (Increase this amount to 3 at Level 9).\n\nAutumn: Gain 1 Resolve, plus one more for every 2 Thorns you lost between the end of the last scene and the start of this one.\n\nWinter: Gain 2 Protection.",
+    "contributor": null
+
+},
+{
+
+    "id": "flametongue-tornade",
+    "name": "Flametongue Tornado",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": [],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "When you would trigger Blaze against a target, you may instead inflict 1 of Special Status: Pyre against that target.\n\nYou also gain an additional Spare Rank 1 Module.",
+    "contributor": null
+
+},
+{
+
+    "id": "encroaching-vines",
+    "name": "Encroaching Vines",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Thorns"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Whenever you give Thorns to an ally without Thorns, increase the amount given by 1.\n\nAt the end of each scene, when characters would lose Thorns, you may consider your Thorns lost to be that of an ally of your choice for the purposes of abilities that track Thorns lost.",
+    "contributor": null
+
+},
+{
+
+    "id": "grin-and-bear-it",
+    "name": "Grin and Bear It",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": [],
+    "hasprereq": true,
+    "prerequisite": ["Cornered Fury or Wounded Tenacity"],
+    "description": "When losing HP from your own skill effects, you may choose to gain half as much of the Special Status: Barrier (Max 10 from one instance).",
+    "contributor": null
+
+},
+{
+
+    "id": "azure-moonlight-technique",
+    "name": "Azure Moonlight Technique",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Poise","Haste","Protection","Endurance","Resolve"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "At the end of each scene, you may spend up to 10 Poise to gain twice as much Special Status: Barrier.\n\nAfter doing so, gain additional benefits based on how much was spent:\n\n3+ Poise: Gain 1 Haste.\n\n5+ Poise: Gain 1 Protection next scene.\n\n8+ Poise: Gain 1 Endurance next scene.\n\n10+ Poise: Gain 2 Resolve next scene.",
+    "contributor": null
+
+},
+{
+
+    "id": "evergreen-bloom",
+    "name": "Evergreen Bloom",
+    "source": "SoTC Core",
+    "featType": "Status-Focused",
+    "statuses": ["Thorns"],
+    "hasprereq": false,
+    "prerequisite": [""],
+    "description": "Whenever you lose 4 or more Thorns at once, including at the end of a scene, gain 1 Special Status: Everbloom, then increase the requirement for this effect by 2 for the rest of the battle.",
+    "contributor": null
+
+}
+]

@@ -7,10 +7,36 @@
 </head>
 <body>
 
-    <h1>Stars of the City Skill Module Library</h1>
+    <h1>Stars of the City Library</h1>
+
+
+    <div id="library-tabs">
+
+    <button
+        class="library-tab"
+        data-library="templates"
+    >
+        Skill Templates
+    </button>
+
+    <button
+        class="library-tab active"
+        data-library="modules"
+    >
+        Skill Modules
+    </button>
+
+    <button
+        class="library-tab"
+        data-library="feats"
+    >
+        Feats
+    </button>
+
+
+    </div>
 
 <div id="main-layout">
-
     <aside id="filters-panel">
 
 <input
@@ -21,37 +47,50 @@
 
 <div id="filters-container">
 
+    <details
+        id="tier-section"
+        class="filter-group"
+    >
+        <summary>Tiers</summary>
 
- <details class="filter-group">
-    <summary>Tiers</summary>
+        <div id="tier-filters"></div>
+    </details>
 
-   <div id="tier-filters"></div>
-  </details>
+    <details
+        id="status-section"
+        class="filter-group"
+    >
+        <summary>Statuses</summary>
 
- <details class="filter-group">
-    <summary>Statuses</summary>
+        <div id="status-filters"></div>
+    </details>
 
-    <div id="status-filters"></div>
-  </details>
+    <details
+        id="tag-section"
+        class="filter-group"
+    >
+        <summary>Tags</summary>
 
- <details class="filter-group">
-    <summary>Tags</summary>
+        <div id="tag-filters"></div>
+    </details>
 
-    <div id="tag-filters"></div>
-  </details>
+    <details
+        id="effect-section"
+        class="filter-group"
+    >
+        <summary>Effects</summary>
 
- <details class="filter-group">
-    <summary>Effects</summary>
+        <div id="effect-filters"></div>
+    </details>
 
-    <div id="effect-filters"></div>
-  </details>
+    <details
+        id="source-section"
+        class="filter-group"
+    >
+        <summary>Sources</summary>
 
- <details class="filter-group">
-    <summary>Sources</summary>
-
-    <div id="source-filters"></div>
-  </details>
-
+        <div id="source-filters"></div>
+    </details>
 
 </div>
 
