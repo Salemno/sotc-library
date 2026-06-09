@@ -537,7 +537,7 @@
     "name": "Sinking",
     "tier": 1,
     "source": "SoTC Core",
-    "description": "Choose one:\n\nOne Die gains: \"[Hit] Inflict {Cost+1} SInking.\"\n\nAny number of Dice gain: \"[Hit] Inflict 1 Sinking.\n\nYou may choose to replace [Hit] with [Clash Win].",
+    "description": "Choose one:\n\nOne Die gains: \"[Hit] Inflict {Cost+1} Sinking.\"\n\nAny number of Dice gain: \"[Hit] Inflict 1 Sinking.\n\nYou may choose to replace [Hit] with [Clash Win].",
     "tags": ["Hit", "Clash Win"],
     "statuses": ["Sinking"],
     "effects": [],
@@ -1686,7 +1686,7 @@
   },
   {
     "id": "141-mutilate",
-    "name": "mutilate",
+    "name": "Mutilate",
     "tier": 3,
     "source": "SoTC Core",
     "description": "One Die gains \"[Hit] Inflict {Cost} Bleed, 1 Fragile, and 1 Bind.\"\n\nIf Cost is 0, inflict 1 Bleed instead.",
@@ -1737,7 +1737,7 @@
     "name": "Bash Through Bodies",
     "tier": 3,
     "source": "SoTC Core",
-    "description": "This skill gains. \"[Eminence] On hit with a Blunt die, deal Blunt Damage and Stagger to a different enemy of your choice equal to half that Die's total power.\"",
+    "description": "This skill gains \"[Eminence] On hit with a Blunt die, deal Blunt Damage and Stagger to a different enemy of your choice equal to half that Die's total power.\"",
     "tags": ["Eminence"],
     "statuses": [],
     "effects": [],
@@ -1767,6 +1767,29 @@
     "effects": ["Emotion Points"],
     "repeating": true,
     "contributor": null
+  },
+  {
+    "id": "148-tremor-backlash",
+    "name": "Tremor Backlash",
+    "tier": 1,
+    "source": "SoTC Core",
+    "description": "One Die gains: \"[Clash Lose] Inflict {Cost+1} Tremor.\"\n\nYou may also choose to add \"and you gain 1 Tremor.\" to the end of that effect.",
+    "tags": ["Clash Lose"],
+    "statuses": ["Tremor"],
+    "effects": ["Self Ailment"],
+    "repeating": true,
+    "contributor": null
+  },
+  {
+    "id": "149-hollow-tune",
+    "name": "Hollow Tune",
+    "tier": 1,
+    "source": "SoTC Core",
+    "description": "This skill gains \"[Eminence] Defensive Dice from the opposing skill lose 1 Power for every 10 Tremor on the target.\"",
+    "tags": ["Eminence"],
+    "statuses": ["Tremor"],
+    "effects": [],
+    "repeating": true,
+    "contributor": null
   }
-
 ]

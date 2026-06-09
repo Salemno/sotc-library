@@ -238,6 +238,7 @@ Filters                              ]
 /* Filter styling */
 
 #tier-filters,
+#type-filters,
 #status-filters, 
 #tag-filters,
 #effect-filters,
@@ -248,6 +249,7 @@ Filters                              ]
 }
 
 #tier-filters label,
+#type-filters label,
 #status-filters label, 
 #tag-filters label,
 #effect-filters label,
@@ -258,6 +260,7 @@ Filters                              ]
 }
 
 .tier-filter,
+.type-filter,
 .status-filter,
 .tag-filter,
 .effect-filter,
@@ -295,6 +298,12 @@ Source Badges                        ]
     font-weight: bold;
 
     white-space: nowrap;
+
+    text-decoration: none;
+}
+
+.source-badge:hover {
+    text-decoration: underline;
 }
 
 .source-core {
@@ -303,9 +312,10 @@ Source Badges                        ]
     color: #d7c495;
 }
 
-.source-community {
-    background-color: #6a994e;
-    color: white;
+.source-bob {
+    background-color: #121212;
+    border-color: rgb(233, 69, 69);
+    color: rgb(233, 69, 69);
 }
 
 .source-supplement {

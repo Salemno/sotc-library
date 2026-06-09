@@ -168,6 +168,8 @@ sourcePanel.style.display = "block";
 
 const tierFilterStates = {};
 
+const typeFilterStates = {};
+
 const statusFilterStates = {};
 
 const tagFilterStates = {};
@@ -216,8 +218,8 @@ function renderModules(records) {
     if (skill.source === "SoTC Core") {
         sourceClass = "source-core";
     }
-    else if (skill.source === "Community Expansion") {
-        sourceClass = "source-community";
+    else if (skill.source === "BoB") {
+        sourceClass = "source-bob";
     }
     else if (skill.source === "City Supplement") {
         sourceClass = "source-supplement";
@@ -251,9 +253,14 @@ else if (skill.tier === 3) {
              ${skill.name}
             </div>
 
-            <div class="source-badge ${sourceClass}">
-             ${skill.source}
-             </div>
+            <a
+    class="source-badge ${sourceClass}"
+    href="${getSourceUrl(skill.source)}"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    ${skill.source}
+</a>
 
 </div>
 
@@ -329,14 +336,19 @@ function renderFeats(records) {
             ${feat.name}
         </div>
 
-        <div class="source-badge ${sourceClass}">
-            ${feat.source}
-        </div>
+        <a
+    class="source-badge ${sourceClass}"
+    href="${getSourceUrl(feat.source)}"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    ${feat.source}
+</a>
 
     </div>
 
         <div>
-                <p class="skill-subline ">${feat.featType}${feat.hasprereq ? ", Req. ": ""}${feat.prerequisite}</p>
+                <p class="skill-subline ">${feat.type}${feat.hasprereq ? ", Req. ": ""}${feat.prerequisite}</p>
             </div>
 
 
@@ -360,10 +372,20 @@ function renderFeats(records) {
 
 async function loadLibrary() {
 
-    allSkills =
+    const coreModules =
         await loadData(
             "skill-modules.json"
         );
+
+    const communityModules =
+        await loadData(
+            "bob-modules.json"
+        );
+
+    allSkills = [
+        ...coreModules,
+        ...communityModules
+    ];
     
     allFeats =
        await loadData(
@@ -373,6 +395,7 @@ async function loadLibrary() {
     initializeTabs();
 
     buildTierFilters();
+    buildTypeFilters();
     buildStatusFilters();
     buildTagFilters();
     buildEffectFilters();
@@ -501,6 +524,17 @@ function noSourceFiltersSelected() {
 
 }
 
+function getSourceUrl(source) {
+
+    const sourceUrls = {
+        "SoTC Core": "https://docs.google.com/document/d/1BnU-VNWkLPjhtYfSfpaErkzdUd_LYk2deGrSQgsatXk/edit?tab=t.0",
+        "BoB": "https://docs.google.com/document/d/1qb63atzLEaild14tgPLhjJ9ncu1FGc8KXxTmLfNOrog/edit?tab=t.0",
+        "Supplement": "Example"
+    };
+
+    return sourceUrls[source] || "";
+}
+
 // Build Filters
 
 function buildTierFilters() {
@@ -549,6 +583,64 @@ function buildTierFilters() {
 
     });
 
+}
+
+function buildTypeFilters() {
+    
+    const container =
+        document.getElementById("type-filters");
+
+        container.innerHTML = "";
+
+    const allTypes =
+    new Set();
+
+allFeats.forEach(feat => {
+
+    if (feat.type) {
+
+        allTypes.add(
+            feat.type
+        );
+
+    }
+
+});
+
+    const sortedTypes =
+        [...allTypes].sort();
+
+    sortedTypes.forEach(type => {
+
+    typeFilterStates[type] = 0;
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "type-filter";
+
+    updateTriStateButton(
+        button,
+        type,
+        0
+    );
+
+    button.addEventListener("click", () => {
+
+        cycleFilterState(
+            typeFilterStates,
+            type,
+            button
+        );
+
+    });
+
+    container.appendChild(button);
+
+});
+
+    
 }
 
 function buildStatusFilters() {
@@ -952,7 +1044,13 @@ const matchesSource =
         );
 
 
- const matchesStatus =
+const matchesType =
+    matchesTriStateFilter(
+        typeFilterStates,
+        feat.type
+    )
+
+const matchesStatus =
     matchesTriStateFilter(
         statusFilterStates,
         feat.statuses
@@ -961,6 +1059,7 @@ const matchesSource =
     console.log({
     name: feat.name,
     matchesSearch,
+    matchesType,
     matchesStatus,
     matchesSource,
 });
@@ -968,6 +1067,7 @@ const matchesSource =
     console.log(searchTerm);
 
     return matchesSearch && 
+           matchesType &&
            matchesStatus && 
            matchesSource;
         });
@@ -982,10 +1082,10 @@ const featTypeOrder = {
 filteredFeats.sort((a, b) => {
 
     const typeA =
-        featTypeOrder[a.featType] || 999;
+        featTypeOrder[a.type] || 999;
 
     const typeB =
-        featTypeOrder[b.featType] || 999;
+        featTypeOrder[b.type] || 999;
 
     if (typeA !== typeB) {
 

@@ -1,0 +1,88 @@
+[
+{
+    "id": "bob-03-gathering",
+    "name": "Sanguine Gathering",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One Skill gains: \"[On Use] Consume up to 50 Bloodfeast (Min.10), gain 1 Sanguine  for every 5 Bloodfeast consumed.\"",
+    "tags": ["On Use"],
+    "statuses": ["Bleed"],
+    "effects": [""],
+    "repeating": false,
+    "contributor": null
+},
+{
+    "id": "04-bob-spear",
+    "name": "Sanguine Spear (Repeating)",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One die gains: \"[Check] Consume up to (Cost*10(Min.10)) Bloodfeast, this die gains +1 Power for every 10 Bloodfeast consumed.\"",
+    "tags": ["Check"],
+    "statuses": ["Bleed"],
+    "effects": ["Power"],
+    "repeating": true,
+    "contributor": null
+},
+
+{
+    "id": "05-bob-rotting",
+    "name": "Rotting (Repeating)",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One die gains: \"[Hit] Inflict 1 Bleed next Scene. You may Consume (Cost*10) (Min.10)) Bloodfeast to also inflict 1 Bleed the Scene after.\"",
+    "tags": ["Hit"],
+    "statuses": ["Bleed"],
+    "effects": [""],
+    "repeating": true,
+    "contributor": null
+},
+{
+    "id": "06-bob-consuming",
+    "name": "Consuming Blood",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One skill gains: \"[On Kill] Gain Bloodfeast equal to target's Bleed X 10. This Skill can only be taken on Skills with a Cost of 1 or higher.\"",
+    "tags": ["On Kill"],
+    "statuses": ["Bleed"],
+    "effects": [""],
+    "repeating": false,
+    "contributor": null
+},
+{
+    "id": "07-bob-shield",
+    "name": "Blood Shield",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One non-counter Block die gains: \"[Check] Consume up to (Cost*10(Min.10)) Bloodfeast , gain +1 Power.\"",
+    "tags": ["Check"],
+    "statuses": ["Bleed"],
+    "effects": [""],
+    "repeating": false,
+    "contributor": null
+},
+{
+    "id": "08-bob-fear",
+    "name": "Fear of Water",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One skill gains: \"[Eminence] if the target has any Sinking , all non-counter Offensive dice on this skill lose 1 power, and all non-counter Defensive dice on this skill gain +2 power.\"",
+    "tags": ["Eminence"],
+    "statuses": ["Bleed","Sinking"],
+    "effects": ["Power"],
+    "repeating": false,
+    "contributor": null
+},
+{
+    "id": "09-bob-crimson",
+    "name": "Crimson Flame",
+    "tier": 1,
+    "source": "BoB",
+    "description": "One die gains: \"[Hit] Inflict Burn on target equal to (Sanguine Stage+1).\"",
+    "tags": ["Hit"],
+    "statuses": ["Bleed","Burn"],
+    "effects": [""],
+    "repeating": true,
+    "contributor": null
+}
+
+]
